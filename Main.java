@@ -19,7 +19,7 @@ class Main {
 
     }
 
-    
+
     /** 
      * Calcule et retourne le temps compensé en minutes et secondes et millisecondes
      *

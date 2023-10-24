@@ -4,33 +4,20 @@ class Main {
     public static void main(String[] args) {
         // Déclaration des variables
         int competiteurs[];
-        int nombreCompetiteurs;
+        int nbCompetiteurs;
         int longeurPiste;
-        int nombreObstacles;
-        int nombreTotalBarres;
-        
-        System.out.println(calcTemps(124338472, 0));
+        int nbObstacles;
+        int nbTotalBarres;
 
-        // Mettre un petite affichage pour le bohneur des yeux
-        nombreCompetiteurs = saisieIntBornes(1, 50, "Saisir le nombre de competiteurs : ");
-        longeurPiste = saisieIntBorneMin(0, "Saisir la longueur de la piste : ");
-        nombreObstacles = saisieIntBorneMin(1, "Saisir le nombe d'obstacles : ");
-        nombreTotalBarres = saisieTotalBarres(nombreObstacles);
+        // Mettre un petit affichage pour le bohneur des yeux
+        nbCompetiteurs = saisieIntBornes(1, 50, "Saisir le nombre de competiteurs : ");
+        longeurPiste = saisieIntBorneInf(0, "Saisir la longueur de la piste : ");
+        nbObstacles = saisieIntBorneInf(1, "Saisir le nombe d'obstacles : ");
+        nbTotalBarres = saisieNbTotalBarres(nbObstacles);
 
-        competiteurs = new int[nombreCompetiteurs];
+        competiteurs = new int[nbCompetiteurs];
 
     }
-    
-    public static String calcTemps(int temps, int nombreBarresTombe){
-        int tempsCompense = temps + (8000 * nombreBarresTombe);
-        int secondes = (int) (tempsCompense/1000) % 60;
-        tempsCompense -= 1000 * secondes;
-        int minutes = (int) tempsCompense /(1000*60);
-        tempsCompense -= 60000 * minutes;
-        return minutes + " minutes et " + secondes + " secondes " + tempsCompense; 
-    }
-    
-    
 
     /**
      * Permet la saisie a l'utilisateur du nombre Total de barres en vérifiant la
@@ -40,10 +27,10 @@ class Main {
      * @param tab   OUT tableau de valeurs
      * @param nbVal IN nombre de valeurs a saisir
      */
-    public static int saisieTotalBarres(int nombreObstacle) {
-        int max = nombreObstacle * 2;
-        int min = nombreObstacle * 4;
-        return saisieIntBornes(min, max, "Saisir le nombre total de barres");
+    public static int saisieNbTotalBarres(int pfNbObstacles) {
+        int min = pfNbObstacles * 2;
+        int max = pfNbObstacles * 4;
+        return saisieIntBornes(min, max, "Saisir le nombre total de barres : ");
     }
 
 
@@ -51,16 +38,16 @@ class Main {
      * Permet la saisie a l'utilisateur d'un tableau
      * 
      * @author Adrien Faure
-     * @param msg   IN message visible a l'utilisateur
-     * @param tab   OUT tableau de valeurs
-     * @param nbVal IN nombre de valeurs a saisir
+     * @param pfMsg   IN message visible a l'utilisateur
+     * @param pfTab   OUT tableau de valeurs
+     * @param pfNbVal IN nombre de valeurs a saisir
      */
-    public static void saisieIntTab(String msg, int[] tab, int nbVal) {
+    public static void saisieTabInt(String pfMsg, int[] pfTab, int pfNbVal) {
         Scanner clavier = new Scanner(System.in);
-        for (int i = 0; i < nbVal; i++) {
-            System.out.print(msg + (i + 1) + " : ");
+        for (int i = 0; i < pfNbVal; i++) {
+            System.out.print(pfMsg + (i + 1) + " : ");
             int saisie = clavier.nextInt();
-            tab[i] = saisie;
+            pfTab[i] = saisie;
         }
     }
 
@@ -68,61 +55,61 @@ class Main {
      * Permet la saisie de l'utilisateur a partir d'un minimum
      * 
      * @author Adrien Faure
-     * @param min IN borne minimum de la valeur saisie
-     * @param msg IN message visible a l'utilisateur
+     * @param pfMin IN borne minimum de la valeur saisie
+     * @param pfMsg IN message visible a l'utilisateur
      * @return valeur saisie par l'utilisateur
      */
-    public static int saisieIntBorneMin(int min, String msg) {
-        System.out.print(msg);
+    public static int saisieIntBorneInf(int pfMin, String pfMsg) {
+        System.out.print(pfMsg);
         Scanner clavier = new Scanner(System.in);
-        int rst = clavier.nextInt();
-        while (rst < min) {
-            System.out.println("(Valeur minimale " + min + ")");
-            System.out.print(msg);
-            rst = clavier.nextInt();
+        int entier = clavier.nextInt();
+        while (entier < pfMin) {
+            System.out.println("(Valeur minimale " + pfMin + ")");
+            System.out.print(pfMsg);
+            entier = clavier.nextInt();
         }
-        return rst;
+        return entier;
     }
 
     /**
      * Permet la saisie de l'utilisateur a partir d'un maximum
      * 
      * @author Adrien Faure
-     * @param max IN borne maximum de la valeur saisie
-     * @param msg IN message visible a l'utilisateur
+     * @param pfMax IN borne maximum de la valeur saisie
+     * @param pfMsg IN message visible a l'utilisateur
      * @return valeur saisie par l'utilisateur
      */
-    public static int saisieIntBorneMax(int max, String msg) {
-        System.out.print(msg);
+    public static int saisieIntBorneSup(int pfMax, String pfMsg) {
+        System.out.print(pfMsg);
         Scanner clavier = new Scanner(System.in);
-        int rst = clavier.nextInt();
-        while (rst > max) {
-            System.out.println("(Valeur maximale " + max + ")");
-            System.out.print(msg);
-            rst = clavier.nextInt();
+        int entier = clavier.nextInt();
+        while (entier > pfMax) {
+            System.out.println("(Valeur maximale " + pfMax + ")");
+            System.out.print(pfMsg);
+            entier = clavier.nextInt();
         }
-        return rst;
+        return entier;
     }
 
     /**
      * Permet la saisie de l'utilisateur a partir d'un minimum et maximum
      * 
      * @author Adrien Faure
-     * @param min IN borne minimum de la valeur saisie
-     * @param max IN borne maximum de la valeur saisie
-     * @param msg IN message visible a l'utilisateur
+     * @param pfMin IN borne minimum de la valeur saisie
+     * @param pfMax IN borne maximum de la valeur saisie
+     * @param pfMsg IN message visible a l'utilisateur
      * @return valeur saisie par l'utilisateur
      */
-    public static int saisieIntBornes(int min, int max, String msg) {
-        System.out.print(msg);
+    public static int saisieIntBornes(int pfMin, int pfMax, String pfMsg) {
+        System.out.print(pfMsg);
         Scanner clavier = new Scanner(System.in);
-        int rst = clavier.nextInt();
-        while (rst < min || rst > max) {
-            System.out.println("(Valeur comprise entre " + min + " et " + max + ")");
-            System.out.print(msg);
-            rst = clavier.nextInt();
+        int entier = clavier.nextInt();
+        while (entier < pfMin || entier > pfMax) {
+            System.out.println("(Valeur comprise entre " + pfMin + " et " + pfMax + ")");
+            System.out.print(pfMsg);
+            entier = clavier.nextInt();
         }
-        return rst;
+        return entier;
     }
 
 

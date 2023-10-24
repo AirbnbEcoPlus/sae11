@@ -163,8 +163,107 @@ class Main {
         pfTabTempsCompetiteurs[pfBrassardCompetiteur-1] = temps ;
     }
 
+     /**
+     * 
+     * 
+     * 
+     * @author Zachary Ivars
+     * 
+     * Programme permettant de trouver les participants allant sur le podium
+     * 
+     * @param pfTableau IN Tableau contenant les temps de chaque participant à la
+     *                  fin des deux manches
+     * @param pfNbVal   IN Le nombre de valeurs à être traité dans pfTableau
+     * @return Une phrase indiquant les numéros des dossard pour chaque participant
+     *         sur le podium avec leur temps.
+     */
+    public static void emplacementPodium(int[] pfTableau, int pfNbVal) {
+        // initialisation des variables
+        int temp;
+        int placesPodium = 1;
 
+        // traitement des données
+        while (placesPodium <= 3) {
+            temp = meilleurTemps(pfTableau, pfNbVal);
+            System.out.println("" + placesPodium + "° : ");
+            if (placesPodium == 1) {
+                for (int i = 0; i < pfNbVal; i++) {
+                    if (temp == pfTableau[i]) {
+                        System.out.print("" + (i + 1));
+                        placesPodium -= 1;
+                    }
+                }
+            } else {
+                temp = meilleurTemps(tempsPostModif(pfTableau, pfNbVal, temp),
+                        tempsPostModif(pfTableau, pfNbVal, temp).length);
+                System.out.println("" + placesPodium + "° : ");
+                for (int i = 0; i < pfNbVal; i++) {
+                    if (temp == pfTableau[i]) {
+                        System.out.print("" + (i + 1));
+                        placesPodium -= 1;
+                    }
+                }
+            }
+        }
+    }
 
+    /**
+     * 
+     * 
+     * 
+     * @author Zachary Ivars
+     * 
+     * Programme permettant de trouver les meilleurs temps
+     * 
+     * @param pfTableau IN Tableau contenant les temps de chaque participant à la
+     *                  fin des deux manches
+     * @param pfNbVal   IN Le nombre de valeurs à être traité dans pfTableau
+     * @return un tableau contenant le mielleur temps, et le nombre d'occurrences du
+     *         meilleur temps
+     */
+    public static int meilleurTemps(int[] pfTableau, int pfNbVal) {
+        // initialisation des variables
+        int bestTime = pfTableau[0];
+
+        for (int i = 1; i < pfNbVal; i++) {
+            if (bestTime >= pfTableau[i])
+                bestTime = pfTableau[i];
+        }
+
+        return bestTime;
+    }
+
+    /**
+     * 
+     * 
+     * 
+     * @author Zachary Ivars
+     * 
+     * Programme permettant d'éliminer les meilleurs temps
+     * 
+     * @param pfTableau IN Tableau contenant les temps de chaque participant à la
+     *                  fin des deux manches
+     * @param pfNbVal   IN Le nombre de valeurs à être traité dans pfTableau
+     * @return un tableau contenant les tous les temps en excluant le mielleur temps
+     */
+    public static int[] tempsPostModif(int[] pfTableau, int pfNbVal, int pfVal) {
+        // initialisation des variables
+        int tab[] = new int[pfNbVal];
+        int nbElt = 0;
+
+        for (int i = 0; i < pfNbVal; i++) {
+            if (pfTableau[i] != pfVal) {
+                tab[i] = pfTableau[i];
+                nbElt++;
+            }
+        }
+        int tabPostModif[] = new int[nbElt];
+        for (int k = 0; k < nbElt; k++) {
+            tabPostModif[k] = tab[k];
+        }
+
+        return tabPostModif;
+    }
 
 
     /* 
@@ -213,270 +312,5 @@ class Main {
             ligneHorizontale = ligneHorizontale + pfCaractere ;
         }
         return ligneHorizontale ;
-    }
-    
-    /**
-     * 
-     * 
-     * @author Zachary Ivars
-     * 
-     * Programme permettant de trouver les participants allant sur le podium
-     * 
-     * @param pfTableau IN Tableau contenant les temps de chaque participant à la
-     *                  fin des deux manches
-     * @param pfNbVal   IN Le nombre de valeurs à être traité dans pfTableau
-     * @return Une phrase indiquant les numéros des dossard pour chaque participant
-     *         sur le podium avec leur temps.
-     */
-    public static void emplacementPodium(int[] pfTableau, int pfNbVal) {
-        // initialisation des variables
-        int tab_1[] = meilleurTemps(pfTableau, pfNbVal);
-        int tab_2[] = meilleurTemps(tab_1, tab_1.length);
-        int tab_3[] = meilleurTemps(tab_2, tab_2.length);
-        int placesPodium = 3;
-
-        // traitement des données
-        placePodiumPremier(tab_1[1], pfTableau, pfNbVal, tab_1);
-        placesPodium -= tab_1[1];
-        placePodiumSecond(tab_2[1], pfTableau, pfNbVal, tab_2, placesPodium);
-        placesPodium -= tab_2[1];
-        placePodiumTroisieme(tab_3[1], pfTableau, pfNbVal, tab_3, placesPodium);
-    }
-
-    /**
-     * 
-     * 
-     * @author Zachary Ivars
-     * 
-     * Programme permettant de trouver les meilleurs temps
-     * 
-     * @param pfTableau IN Tableau contenant les temps de chaque participant à la
-     *                  fin des deux manches
-     * @param pfNbVal   IN Le nombre de valeurs à être traité dans pfTableau
-     * @return un tableau contenant le mielleur temps, et le nombre d'occurrences du
-     *         meilleur temps
-     */
-    public static int[] meilleurTemps(int[] pfTableau, int pfNbVal) {
-        // initialisation des variables
-        int bestTime = pfTableau[0];
-        int tabRes[] = new int[2];
-        int nbOccurrences = 1;
-
-        for (int i = 1; i < pfNbVal; i++) {
-            if (bestTime < pfTableau[i]) {
-                bestTime = pfTableau[i];
-                nbOccurrences = 1;
-            } else if (bestTime == pfTableau[i]) {
-                nbOccurrences += 1;
-            }
-        }
-        tabRes[0] = bestTime;
-        tabRes[1] = nbOccurrences;
-
-        return tabRes;
-    }
-
-    /**
-     * 
-     * 
-     * @author Zachary Ivars
-     * 
-     * Programme permettant d'éliminer les meilleurs temps
-     * 
-     * @param pfTableau IN Tableau contenant les temps de chaque participant à la
-     *                  fin des deux manches
-     * @param pfNbVal   IN Le nombre de valeurs à être traité dans pfTableau
-     * @return un tableau contenant les tous les temps en excluant le mielleur temps
-     */
-    public static int[] tempsPostModif(int[] pfTableau, int pfNbVal, int pfVal) {
-        // initialisation des variables
-        int tab[] = new int[pfNbVal];
-        int nbElt = 0;
-
-        for (int i = 0; i < pfNbVal; i++) {
-            if (pfTableau[i] != pfVal) {
-                tab[i] = pfTableau[i];
-                nbElt++;
-            }
-        }
-        int tabPostModif[] = new int[nbElt];
-        for (int k = 0; k < nbElt; k++) {
-            tabPostModif[k] = tab[k];
-        }
-
-        return tabPostModif;
-    }
-
-    /**
-     * 
-     * 
-     * @author Zachary Ivars
-     * 
-     * Programme permettant de trouver l'indice du temps voulu dans le tableau
-     * donnée
-     * 
-     * @param pfTableau IN Tableau contenant les temps de chaque participant à la
-     *                  fin des deux manches
-     * @param pfNbVal   IN Le nombre de valeurs à être traité dans pfTableau
-     * @return l'indice du temps cherché dans le tableau
-     */
-    public static int rechercheIndice(int[] pfTableau, int pfNbVal, int pfVal) {
-        int indice = 0;
-        boolean trouvee = false;
-        int i = 0;
-
-        while (trouvee = false || i < pfNbVal) {
-            if (pfTableau[i] == pfVal) {
-                indice = i;
-                trouvee = true;
-            }
-            i++;
-        }
-
-        return indice;
-    }
-
-    /**
-     * 
-     * 
-     * @author Zachary Ivars
-     * 
-     * Programme permettant d'en déduire le cas trouvé selon les données du meilleur
-     * temps
-     * 
-     * @param choix IN le cas trouvé
-     * 
-     */
-    public static void placePodiumPremier(int cas, int[] pfTableauResultat, int pfNbVal, int[] pfTableau) {
-        int indice;
-        if (cas == 1) {
-            indice = rechercheIndice(pfTableauResultat, pfNbVal, cas);
-            System.out.println("Le premier est le numéro : " + (indice + 1) + "avec un temps de: " + pfTableau[0]);
-        } else if (cas == 2) {
-            int compteur = 0;
-            System.out.println("Les premiers sont les numéros : ");
-            while (compteur < cas) {
-                for (int i = 0; i < pfNbVal; i++) {
-                    if (pfTableau[i] == pfTableau[0]) {
-                        System.out.print("" + i + " ");
-                        compteur++;
-                        System.out.print("" + rechercheIndice(pfTableauResultat, pfNbVal, cas) + " ");
-                    }
-                }
-            }
-            System.out.print("avec un temps de: " + pfTableau[1]);
-        } else if (cas >= 3) {
-            int compteur = 0;
-            System.out.println("Les premiers sont les numéros : ");
-            while (compteur < cas) {
-                for (int i = 0; i < pfNbVal; i++) {
-                    if (pfTableau[i] == pfTableau[0]) {
-                        System.out.print("" + i + " ");
-                        compteur++;
-                        System.out.print("" + rechercheIndice(pfTableauResultat, pfNbVal, cas) + " ");
-                    }
-                }
-            }
-        }
-    }
-
-    /**
-     * 
-     * 
-     * @author Zachary Ivars
-     * 
-     * Programme permettant d'en déduire le cas trouvé selon les données du meilleur
-     * temps
-     * 
-     * @param choix IN le cas trouvé
-     * 
-     */
-    public static void placePodiumSecond(int cas, int[] pfTableauResultat, int pfNbVal, int[] pfTableau,
-            int placesDisponible) {
-        int indice;
-        if (placesDisponible > 0) {
-            if (cas == 1) {
-                indice = rechercheIndice(pfTableauResultat, pfNbVal, cas);
-                System.out.println("Le seconde est le numéro : " + (indice + 1) + "avec un temps de: " + pfTableau[0]);
-            } else if (cas == 2) {
-                int compteur = 0;
-                System.out.println("Les secondes sont les numéros : ");
-                while (compteur < cas) {
-                    for (int i = 0; i < pfNbVal; i++) {
-                        if (pfTableau[i] == pfTableau[0]) {
-                            System.out.print("" + i + " ");
-                            compteur++;
-                            System.out.print("" + rechercheIndice(pfTableauResultat, pfNbVal, cas) + " ");
-                        }
-                    }
-                }
-                System.out.print("avec un temps de: " + pfTableau[1]);
-            } else if (cas >= 3) {
-                int compteur = 0;
-                System.out.println("Les secondes sont les numéros : ");
-                while (compteur < cas) {
-                    for (int i = 0; i < pfNbVal; i++) {
-                        if (pfTableau[i] == pfTableau[0]) {
-                            System.out.print("" + i + " ");
-                            compteur++;
-                            System.out.print("" + rechercheIndice(pfTableauResultat, pfNbVal, cas) + " ");
-                        }
-                    }
-                }
-                System.out.print("avec un temps de: " + pfTableau[1]);
-            }
-        } else {
-            System.out.println("Il y a plus de places de disponible");
-        }
-    }
-
-    /**
-     * 
-     * 
-     * @author Zachary Ivars
-     * 
-     * Programme permettant d'en déduire le cas trouvé selon les données du meilleur
-     * temps
-     * 
-     * @param choix IN le cas trouvé
-     * 
-     */
-    public static void placePodiumTroisieme(int cas, int[] pfTableauResultat, int pfNbVal, int[] pfTableau,
-            int placesDisponible) {
-        int indice;
-        if (placesDisponible > 0) {
-            if (cas == 1) {
-                indice = rechercheIndice(pfTableauResultat, pfNbVal, cas);
-                System.out.println("Le troisème est le numéro : " + (indice + 1) + "avec un temps de: " + pfTableau[0]);
-            } else if (cas == 2) {
-                int compteur = 0;
-                System.out.println("Les troisième sont les numéros : ");
-                while (compteur < cas) {
-                    for (int i = 0; i < pfNbVal; i++) {
-                        if (pfTableau[i] == pfTableau[0]) {
-                            System.out.print("" + i + " ");
-                            compteur++;
-                            System.out.print("" + rechercheIndice(pfTableauResultat, pfNbVal, cas) + " ");
-                        }
-                    }
-                }
-                System.out.print("avec un temps de: " + pfTableau[1]);
-            } else if (cas >= 3) {
-                int compteur = 0;
-                System.out.println("Les troisième sont les numéros : ");
-                while (compteur < cas) {
-                    for (int i = 0; i < pfNbVal; i++) {
-                        if (pfTableau[i] == pfTableau[0]) {
-                            System.out.print("" + i + " ");
-                            compteur++;
-                            System.out.print("" + rechercheIndice(pfTableauResultat, pfNbVal, cas) + " ");
-                        }
-                    }
-                }
-                System.out.print("avec un temps de: " + pfTableau[1]);
-            }
-        } else {
-            System.out.println("Il y a plus de places de disponible");
-        }
     }
 }

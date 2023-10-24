@@ -4,10 +4,13 @@ class Main {
     public static void main(String[] args) {
 
     }
+    
+
 
     /**
      * Permet la saisie a l'utilisateur d'un tableau
      * 
+     * @author Adrien Faure
      * @param msg   IN message visible a l'utilisateur
      * @param tab   OUT tableau de valeurs
      * @param nbVal IN nombre de valeurs a saisir
@@ -24,6 +27,7 @@ class Main {
     /**
      * Permet la saisie de l'utilisateur a partir d'un minimum
      * 
+     * @author Adrien Faure
      * @param min IN borne minimum de la valeur saisie
      * @param msg IN message visible a l'utilisateur
      * @return valeur saisie par l'utilisateur
@@ -42,6 +46,7 @@ class Main {
     /**
      * Permet la saisie de l'utilisateur a partir d'un maximum
      * 
+     * @author Adrien Faure
      * @param max IN borne maximum de la valeur saisie
      * @param msg IN message visible a l'utilisateur
      * @return valeur saisie par l'utilisateur
@@ -60,6 +65,7 @@ class Main {
     /**
      * Permet la saisie de l'utilisateur a partir d'un minimum et maximum
      * 
+     * @author Adrien Faure
      * @param min IN borne minimum de la valeur saisie
      * @param max IN borne maximum de la valeur saisie
      * @param msg IN message visible a l'utilisateur

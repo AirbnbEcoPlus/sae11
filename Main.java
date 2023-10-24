@@ -18,6 +18,8 @@ class Main {
         competiteurs = new int[nbCompetiteurs];
 
     }
+
+    
     /** 
      * Calcule et retourne le temps compensé en minutes et secondes et millisecondes
      *
@@ -34,6 +36,8 @@ class Main {
         tempsCompense -= 60000 * minutes;
         return minutes + " minutes et " + secondes + " secondes " + tempsCompense; 
     }
+
+
     /**
      * Permet la saisie a l'utilisateur du nombre Total de barres en vérifiant la
      * coherence avec le nombre d'obstacle

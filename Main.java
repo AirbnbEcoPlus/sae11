@@ -3,11 +3,11 @@ import java.util.Scanner;
 class Main {
     public static void main(String[] args) {
         // Déclaration des variables
-        int competiteurs[];
-        int nbCompetiteurs;
-        int longeurPiste;
-        int nbObstacles;
-        int nbTotalBarres;
+        int competiteurs[];     // Tableau contenant les temps de chaque compétiteur
+        int nbCompetiteurs;     // Nombre de compétiteurs
+        int longeurPiste;       // Longueur de la piste
+        int nbObstacles;        // Nombre d'obstacles sur la piste
+        int nbTotalBarres;      // Nombre total de barres (sur l'ensemble des obstacles)
 
         // Mettre un petit affichage pour le bohneur des yeux
         nbCompetiteurs = saisieIntBornes(1, 50, "Saisir le nombre de competiteurs : ");

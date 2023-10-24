@@ -182,6 +182,10 @@ class Main {
     }
     
     /**
+     * 
+     * 
+     * @author Zachary Ivars
+     * 
      * Programme permettant de trouver les participants allant sur le podium
      * 
      * @param pfTableau IN Tableau contenant les temps de chaque participant à la
@@ -206,6 +210,10 @@ class Main {
     }
 
     /**
+     * 
+     * 
+     * @author Zachary Ivars
+     * 
      * Programme permettant de trouver les meilleurs temps
      * 
      * @param pfTableau IN Tableau contenant les temps de chaque participant à la
@@ -235,6 +243,10 @@ class Main {
     }
 
     /**
+     * 
+     * 
+     * @author Zachary Ivars
+     * 
      * Programme permettant d'éliminer les meilleurs temps
      * 
      * @param pfTableau IN Tableau contenant les temps de chaque participant à la
@@ -262,6 +274,10 @@ class Main {
     }
 
     /**
+     * 
+     * 
+     * @author Zachary Ivars
+     * 
      * Programme permettant de trouver l'indice du temps voulu dans le tableau
      * donnée
      * 
@@ -287,6 +303,10 @@ class Main {
     }
 
     /**
+     * 
+     * 
+     * @author Zachary Ivars
+     * 
      * Programme permettant d'en déduire le cas trouvé selon les données du meilleur
      * temps
      * 
@@ -326,6 +346,17 @@ class Main {
         }
     }
 
+    /**
+     * 
+     * 
+     * @author Zachary Ivars
+     * 
+     * Programme permettant d'en déduire le cas trouvé selon les données du meilleur
+     * temps
+     * 
+     * @param choix IN le cas trouvé
+     * 
+     */
     public static void placePodiumSecond(int cas, int[] pfTableauResultat, int pfNbVal, int[] pfTableau,
             int placesDisponible) {
         int indice;
@@ -365,6 +396,17 @@ class Main {
         }
     }
 
+    /**
+     * 
+     * 
+     * @author Zachary Ivars
+     * 
+     * Programme permettant d'en déduire le cas trouvé selon les données du meilleur
+     * temps
+     * 
+     * @param choix IN le cas trouvé
+     * 
+     */
     public static void placePodiumTroisieme(int cas, int[] pfTableauResultat, int pfNbVal, int[] pfTableau,
             int placesDisponible) {
         int indice;

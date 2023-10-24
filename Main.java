@@ -132,6 +132,40 @@ class Main {
     }
 
 
+    /* 
+     * ------------------------------------------
+     *    FONCTIONS DE SAISIE ET DE TRAITEMENT
+     * ------------------------------------------
+     *    - Par manche
+     *    - Pour chaque compétiteur
+     * 
+     */
+
+    /**
+     * --------------------------------------
+     *    Fonction : saisieResultatsManche
+     * --------------------------------------
+     * 
+     * @author Victor Jockin
+     * 
+     * Procède à la saisie des résultats pour un compétiteur
+     * d'une manche
+     * 
+     * @param pfTabTempsCompetiteurs    IN/OUT  :   tableau des temps de chaque compétiteurs
+     * @param pfBrassardCompetiteur     IN      :   numéro de brassard du compétiteur
+     * 
+    **/
+    public static void saisieResultatsManche(int[] pfTabTempsCompetiteurs, int pfBrassardCompetiteur) {
+        int nbBarresTombees = saisieIntBornes(0, nbTotalBarres, "Saisir le nombre de barres tombées : ") ;
+        int nbRefus = saisieIntBorneInf(0, "Saisir le nombre de refus : ") ;
+        int testChute = saisieIntBorne(0, 1, "Y a-t-il eu chute ?\n[0] Oui\n[1] Non\n[2] Si quand même\n---") ;
+        int temps = saisieIntBorneInf(0, "Saisir le temps réalisé en millisecondes : ") ;
+        pfTabTempsCompetiteurs[pfBrassardCompetiteur-1] = temps ;
+    }
+
+
+
+
 
     /* 
      * ---------------------------

@@ -33,6 +33,7 @@ class Main {
         return saisieIntBornes(min, max, "Saisir le nombre total de barres");
     }
 
+
     /**
      * Permet la saisie a l'utilisateur d'un tableau
      * 
@@ -111,3 +112,4 @@ class Main {
         return rst;
     }
 }
+

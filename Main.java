@@ -2,18 +2,18 @@ import java.util.Scanner;
 
 class Main {
     public static void main(String[] args) {
-        // Variables
+        // Déclaration des variables
         int competiteurs[];
         int nombreCompetiteurs;
         int longeurPiste;
-        int nombreObstacle;
+        int nombreObstacles;
         int nombreTotalBarres;
 
         // Mettre un petite affichage pour le bohneur des yeux
         nombreCompetiteurs = saisieIntBornes(1, 50, "Saisir le nombre de competiteurs : ");
         longeurPiste = saisieIntBorneMin(0, "Saisir la longueur de la piste : ");
-        nombreObstacle = saisieIntBorneMin(1, "Saisir le nombe d'obstacles : ");
-        nombreTotalBarres = saisieTotalBarres(nombreObstacle);
+        nombreObstacles = saisieIntBorneMin(1, "Saisir le nombe d'obstacles : ");
+        nombreTotalBarres = saisieTotalBarres(nombreObstacles);
 
         competiteurs = new int[nombreCompetiteurs];
 
@@ -110,4 +110,57 @@ class Main {
         }
         return rst;
     }
+
+
+
+    /* 
+     * ---------------------------
+     *    FONCTIONS D'AFFICHAGE 
+     * ---------------------------
+     */
+
+    /**
+     * ---------------------------------
+     *    Fonction : miseEnFormeTitre
+     * ---------------------------------
+     * 
+     * @author Victor Jockin
+     *
+     * Retourne la mise en forme d'un titre
+     * 
+     * @param pfTitre   IN  :   titre à mettre en forme
+     * 
+     * @return le titre mis en forme
+     * 
+    **/
+    public static String miseEnFormeTitre(String pfTitre) {
+        return pfTitre + "\n" + ligneHorizontale(pfTitre.length(), "-") ;
+    }
+
+    /**
+     * ---------------------------------
+     *    Fonction : ligneHorizontale
+     * ---------------------------------
+     * 
+     * @author Victor Jockin
+     *
+     * Retourne une ligne horizontale construite à partir
+     * d'un caractère donné en paramètre
+     * 
+     * @param pfLongueurLigne   IN  :   longueur de la ligne à construire
+     * @param pfCaractere       IN  :   caractère utilisé pour construire la ligne
+     * 
+     * @return la ligne horizontale
+     * 
+    **/
+    public static String ligneHorizontale(int pfLongueurLigne, String pfCaractere) {
+        String ligneHorizontale = "" ;
+        for (int i = 0 ; i<pfLongueurLigne ; i++) {
+            ligneHorizontale = ligneHorizontale + pfCaractere ;
+        }
+        return ligneHorizontale ;
+    }
+
 }
+
+

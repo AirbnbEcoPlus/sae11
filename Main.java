@@ -18,7 +18,22 @@ class Main {
         competiteurs = new int[nbCompetiteurs];
 
     }
-
+    /** 
+     * Calcule et retourne le temps compensé en minutes et secondes et millisecondes
+     *
+     * @author Adrien Faure
+     * @param temps IN : Temps d'un competiteur
+     * @param nombreBarresTombe IN : nombre de barres tombé par le compétiteur
+     * @return temps composé
+     */
+    public static String calcTemps(int temps, int nombreBarresTombe){
+        int tempsCompense = temps + (8000 * nombreBarresTombe);
+        int secondes = (int) (tempsCompense/1000) % 60;
+        tempsCompense -= 1000 * secondes;
+        int minutes = (int) tempsCompense /(1000*60);
+        tempsCompense -= 60000 * minutes;
+        return minutes + " minutes et " + secondes + " secondes " + tempsCompense; 
+    }
     /**
      * Permet la saisie a l'utilisateur du nombre Total de barres en vérifiant la
      * coherence avec le nombre d'obstacle

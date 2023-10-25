@@ -35,7 +35,7 @@ class Main {
      * @param nbBarresTombees IN : nombre de barres tombé par le compétiteur
      * @return temps composé
      */
-    public static int calculeTempsAvecPenalites(int temps, int nbBarresTombees){
+    public static int calculTempsAvecPenalites(int temps, int nbBarresTombees){
         int tempsCompense = temps + (8000 * nbBarresTombees);
         return tempsCompense; 
     }

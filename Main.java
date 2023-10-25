@@ -203,24 +203,31 @@ class Main {
         int placesPodium = 1;
 
         // traitement des données
+        /* temp signifiant temporary permet de garder le meilleur temps fait par les compétiteurs */
+        temp = meilleurTemps(pfTableau, pfNbVal);
+        /* Tant que le nombre de places occupées est inférieur ou égale à 3 on éxecute le code*/
         while (placesPodium <= 3) {
-            temp = meilleurTemps(pfTableau, pfNbVal);
+            /* On dis à chaque place le numéro de place */
             System.out.println("" + placesPodium + "° : ");
+            /* si c'est la place occupée est 1 alors on regarde combien de fois temp apparaît puis on rajoute le numéro du brassard correspondant à la chaîne de caractère */
             if (placesPodium == 1) {
                 for (int i = 0; i < pfNbVal; i++) {
                     if (temp == pfTableau[i]) {
                         System.out.print("" + (i + 1));
-                        placesPodium -= 1;
+                        /* À chaque fois que le temps est trouvé alors on rajoute 1 au nombre de places occupées */
+                        placesPodium += 1;
                     }
                 }
+            /* Si la place occupé n'est pas la première place alors on éxecute le code */
             } else {
-                temp = meilleurTemps(tempsPostModif(pfTableau, pfNbVal, temp),
-                        tempsPostModif(pfTableau, pfNbVal, temp).length);
+                /* On redefinit temp qui est deuxième meilleur temps */
+                temp = meilleurTemps(tempsPostModif(pfTableau, pfNbVal, temp), tempsPostModif(pfTableau, pfNbVal, temp).length);
                 System.out.println("" + placesPodium + "° : ");
+                /* on regarde combien de fois temp apparaît puis on rajoute le numéro du brassard correspondant à la chaîne de caractère */
                 for (int i = 0; i < pfNbVal; i++) {
                     if (temp == pfTableau[i]) {
                         System.out.print("" + (i + 1));
-                        placesPodium -= 1;
+                        placesPodium += 1;
                     }
                 }
             }
@@ -245,6 +252,8 @@ class Main {
         // initialisation des variables
         int bestTime = pfTableau[0];
 
+        // traitement des données
+        /* On parcours le tableau et à chaque fois que bestTime est supérieur à l'élément dans le tableau alors on affecte à bestTime le temps le plus bas */
         for (int i = 1; i < pfNbVal; i++) {
             if (bestTime >= pfTableau[i])
                 bestTime = pfTableau[i];
@@ -271,17 +280,21 @@ class Main {
         int tab[] = new int[pfNbVal];
         int nbElt = 0;
 
+        //traitement des données
+        /* On parcours le tableau original, et on affecte tous les éléments différent du meilleur temps à un nouveau tableau */
         for (int i = 0; i < pfNbVal; i++) {
             if (pfTableau[i] != pfVal) {
                 tab[i] = pfTableau[i];
                 nbElt++;
             }
         }
+        /* On réaffecte tous les éléments du nouveau tableau dans le tableau renvoyée */
         int tabPostModif[] = new int[nbElt];
         for (int k = 0; k < nbElt; k++) {
             tabPostModif[k] = tab[k];
         }
 
+        /* Retour du tableau */
         return tabPostModif;
     }
 

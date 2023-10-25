@@ -1,6 +1,13 @@
 import java.util.Scanner;
 
 class Main {
+
+
+    /**
+     * Point d'entrée du programme
+     * @author Victor Jockin / Adrien Faure / Zachary Ivars 
+     * @param args IN : arguments de la ligne de commande
+     */
     public static void main(String[] args) {
         // Déclaration des variables
         int competiteurs[];     // Tableau contenant les temps de chaque compétiteur

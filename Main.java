@@ -56,11 +56,11 @@ class Main {
          * 
          */
         for (int manche = 1 ; manche<=2 ; manche++) {
-            
             for (int competiteur = 1 ; competiteur<=nbCompetiteurs ; competiteur++) {
                 saisieEtTraitementResultatsManche(tabTempsCompetiteurs, competiteur, longueurParcours) ;
             }
         }
+        emplacementPodium(tabTempsCompetiteurs, nbCompetiteurs) ;
 
 
     }

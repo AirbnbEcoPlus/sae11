@@ -56,10 +56,13 @@ class Main {
          * 
          */
         for (int manche = 1 ; manche<=2 ; manche++) {
+            afficherTitre("MANCHE " + manche, 3) ;
             for (int competiteur = 1 ; competiteur<=nbCompetiteurs ; competiteur++) {
-                saisieEtTraitementResultatsManche(tabTempsCompetiteurs, competiteur, longueurParcours) ;
+                afficherSousTitre("Compétiteur n°" + competiteur) ;
+                saisieEtTraitementResultatsManche(tabTempsCompetiteurs, competiteur, longueurParcours, nbTotalBarres) ;
             }
         }
+        afficherTitre("PODIUM", 3) ;
         emplacementPodium(tabTempsCompetiteurs, nbCompetiteurs) ;
 
 
@@ -244,9 +247,9 @@ class Main {
     public static void saisieEtTraitementResultatsManche(int[] pfTabTempsCompetiteurs, int pfBrassardCompetiteur, int pfLongueurParcours, int pfNbTotalBarres) {
 
         // Saisie des résultats du compétiteur
-        int nbBarresTombees = saisieIntBornes(0, nbTotalBarres, "Saisir le nombre de barres tombées : ") ;
+        int nbBarresTombees = saisieIntBornes(0, pfNbTotalBarres, "Saisir le nombre de barres tombées : ") ;
         int nbRefus = saisieIntBorneInf(0, "Saisir le nombre de refus : ") ;
-        int testChute = saisieIntBorne(0, 1, "Y a-t-il eu chute ?\n[0] Oui\n[1] Non\n[2] Si quand même\n---") ;
+        int testChute = saisieIntBornes(0, 1, "Y a-t-il eu chute ?\n[0] Oui\n[1] Non\n[2] Si quand même\n---") ;
         int temps = saisieIntBorneInf(0, "Saisir le temps réalisé en millisecondes : ") ;
         pfTabTempsCompetiteurs[pfBrassardCompetiteur-1] = temps ;
 
@@ -439,11 +442,30 @@ class Main {
      *
      * Affiche la mise en forme du titre donné en paramètre
      * 
-     * @param pfTitre   IN  :   titre à mettre en forme et à afficher
+     * @param pfTitre       IN  :   titre à mettre en forme et à afficher
+     * @param pfTabulation  IN  :   tabulation (nombre d'espaces) avant le titre
      * 
     **/
-    public static void afficherTitre(String pfTitre) {
-        System.out.println(pfTitre + "\n" + ligneHorizontale(pfTitre.length(), "-")) ;
+    public static void afficherTitre(String pfTitre, int pfTabulation) {
+        String ligneH = ligneHorizontale(pfTitre.length() + 2 * pfTabulation, "-") ;
+        String tabulation = ligneHorizontale(pfTabulation, " ") ;
+        System.out.println("\n" + ligneH + "\n" + tabulation + pfTitre + "\n" + ligneH + "\n") ;
+    }
+
+    /**
+     * ----------------------------------
+     *    Fonction : afficherSousTitre
+     * ----------------------------------
+     * 
+     * @author Victor Jockin
+     *
+     * Affiche la mise en forme du sous-titre donné en paramètre
+     * 
+     * @param pfSousTitre   IN  :   sous-titre à mettre en forme et à afficher
+     * 
+    **/
+    public static void afficherSousTitre(String pfSousTitre) {
+        System.out.println(pfSousTitre + "\n" + ligneHorizontale(pfSousTitre.length(), "-")) ;
     }
 
     /**

@@ -238,9 +238,10 @@ class Main {
      * @param pfTabTempsCompetiteurs    IN/OUT  :   tableau des temps de chaque compétiteurs
      * @param pfBrassardCompetiteur     IN      :   numéro de brassard du compétiteur
      * @param pfLongueurParcours        IN      :   longueur du parcours (utilisée dans la fonction estElimine)
+     * @param pfNbTotalBarres           IN      :   nombre total de barres du parcours
      * 
     **/
-    public static void saisieEtTraitementResultatsManche(int[] pfTabTempsCompetiteurs, int pfBrassardCompetiteur, int pfLongueurParcours) {
+    public static void saisieEtTraitementResultatsManche(int[] pfTabTempsCompetiteurs, int pfBrassardCompetiteur, int pfLongueurParcours, int pfNbTotalBarres) {
 
         // Saisie des résultats du compétiteur
         int nbBarresTombees = saisieIntBornes(0, nbTotalBarres, "Saisir le nombre de barres tombées : ") ;

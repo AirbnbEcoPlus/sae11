@@ -64,9 +64,11 @@ class Main {
             afficherTitre("MANCHE " + manche, 3) ;
             sautDeLignes(1) ;
             for (int competiteur = 1 ; competiteur<=nbCompetiteurs ; competiteur++) {
-                afficherSousTitre("Compétiteur n°" + competiteur) ;
-                saisieEtTraitementResultatsManche(tabTempsCompetiteurs, competiteur, longueurParcours, nbTotalBarres) ;
-                sautDeLignes(1) ;
+                if (tabTempsCompetiteurs[competiteur-1] != -1) {
+                    afficherSousTitre("Compétiteur n°" + competiteur) ;
+                    saisieEtTraitementResultatsManche(tabTempsCompetiteurs, competiteur, longueurParcours, nbTotalBarres) ;
+                    sautDeLignes(1) ;
+                }
             }
         }
         // Saut de lignes afin d'améliorer la lisibilité
@@ -103,7 +105,24 @@ class Main {
         int min = pfNbObstacles * 2;
         int max = pfNbObstacles * 4;
         return saisieIntBornes(min, max, "Saisir le nombre total de barres : ");
-    } 
+    }
+
+    /**
+     * Permet la saisie a l'utilisateur d'un tableau
+     * 
+     * @author Adrien Faure
+     * @param pfMsg   IN message visible a l'utilisateur
+     * @param pfTab   OUT tableau de valeurs
+     * @param pfNbVal IN nombre de valeurs a saisir
+     */
+    public static void saisieTabInt(String pfMsg, int[] pfTab, int pfNbVal) {
+        Scanner clavier = new Scanner(System.in);
+        for (int i = 0; i < pfNbVal; i++) {
+            System.out.print(pfMsg + (i + 1) + " : ");
+            int saisie = clavier.nextInt();
+            pfTab[i] = saisie;
+        }
+    }
 
     /**
      * Permet la saisie de l'utilisateur a partir d'un minimum
@@ -241,7 +260,7 @@ class Main {
      * 
     **/
     public static void saisieEtTraitementResultatsManche(int[] pfTabTempsCompetiteurs, int pfBrassardCompetiteur, int pfLongueurParcours, int pfNbTotalBarres) {
-
+        
         // Saisie des résultats du compétiteur
         int nbBarresTombees = saisieIntBornes(0, pfNbTotalBarres, "Saisir le nombre de barres tombées : ") ;
         int nbRefus = saisieIntBorneInf(0, "Saisir le nombre de refus : ") ;
@@ -329,6 +348,10 @@ class Main {
         temp = meilleurTemps(pfTableau, pfNbVal);
         tempTab = tempsPostModif(pfTableau, pfNbVal, temp);
         /* Tant que le nombre de places occupées est inférieur ou égale à 3 on éxecute le code*/
+        if (pfNbVal == 1){
+            if (pfTableau[0] == -1) System.out.println ("Le seul compétiteur est perdant");
+            else System.out.println("Le seul compétiteur a gagne avec un temps de : " + convertMillisecondeToTime(pfTableau[0]));
+        } else {
         while (placesPodium <= 3) {
             /* On dis à chaque place le numéro de place */
             System.out.println("\n" + placesPodium + "° : ");
@@ -354,6 +377,7 @@ class Main {
                     }
             }
         }
+        }  
     }
 
     /**
@@ -376,7 +400,7 @@ class Main {
 
         // traitement des données
         /* On parcours le tableau et à chaque fois que bestTime est supérieur à l'élément dans le tableau alors on affecte à bestTime le temps le plus bas */
-        for (int i = 1; i < pfNbVal; i++)
+        for (int i = 0; i < pfNbVal; i++)
             if (bestTime >= pfTableau[i] && pfTableau[i] >= 0)
                 bestTime = pfTableau[i];
         
@@ -507,8 +531,5 @@ class Main {
         }
         return ligneHorizontale ;
     }
-
-
-
 
 }

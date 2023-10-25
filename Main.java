@@ -32,11 +32,11 @@ class Main {
      *
      * @author Adrien Faure
      * @param temps IN : Temps d'un competiteur
-     * @param nombreBarresTombe IN : nombre de barres tombé par le compétiteur
+     * @param nbBarresTombees IN : nombre de barres tombé par le compétiteur
      * @return temps composé
      */
-    public static int calcTemps(int temps, int nombreBarresTombe){
-        int tempsCompense = temps + (8000 * nombreBarresTombe);
+    public static int calculeTempsAvecPenalites(int temps, int nbBarresTombees){
+        int tempsCompense = temps + (8000 * nbBarresTombees);
         return tempsCompense; 
     }
     

@@ -9,21 +9,24 @@ class Main {
      * @param args IN : arguments de la ligne de commande
      */
     public static void main(String[] args) {
-        // Déclaration des variables
-        int competiteurs[];     // Tableau contenant les temps de chaque compétiteur
-        int nbCompetiteurs;     // Nombre de compétiteurs
-        int longueurParcours;       // Longueur de la piste
-        int nbObstacles;        // Nombre d'obstacles sur la piste
-        int nbTotalBarres;      // Nombre total de barres (sur l'ensemble des obstacles)
 
-        // Mettre un petit affichage pour le bohneur des yeux
+        // Déclaration des variables
+        int tabTempsCompetiteurs[];     // Tableau contenant les temps de chaque compétiteur
+        int nbCompetiteurs;             // Nombre de compétiteurs
+        int longueurParcours;           // Longueur de la piste
+        int nbObstacles;                // Nombre d'obstacles sur la piste
+        int nbTotalBarres;              // Nombre total de barres (sur l'ensemble des obstacles)
+
+        // Saisie des variables
         nbCompetiteurs = saisieIntBornes(1, 50, "Saisir le nombre de competiteurs : ");
         longueurParcours = saisieIntBorneInf(0, "Saisir la longueur de la piste : ");
         nbObstacles = saisieIntBorneInf(1, "Saisir le nombe d'obstacles : ");
         nbTotalBarres = saisieNbTotalBarres(nbObstacles);
 
-        competiteurs = new int[nbCompetiteurs];
+        // Tableau contenant les temps de chaque compétiteur
+        tabTempsCompetiteurs = new int[nbCompetiteurs];
 
+        
     }
 
 

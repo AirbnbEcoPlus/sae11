@@ -38,10 +38,15 @@ class Main {
         int nbTotalBarres;              // Nombre total de barres (sur l'ensemble des obstacles)
 
         // Saisie des variables
+        afficherTitre("INFORMATIONS SUR LE PARCOURS", 3) ;
+        sautDeLignes(1) ;
+
         nbCompetiteurs = saisieIntBornes(1, 50, "Saisir le nombre de competiteurs : ");
         longueurParcours = saisieIntBorneInf(0, "Saisir la longueur de la piste : ");
         nbObstacles = saisieIntBorneInf(1, "Saisir le nombe d'obstacles : ");
         nbTotalBarres = saisieNbTotalBarres(nbObstacles);
+        // Saut de lignes afin d'améliorer la lisibilité
+        sautDeLignes(2) ;
 
         // Tableau contenant les temps de chaque compétiteur
         tabTempsCompetiteurs = new int[nbCompetiteurs];
@@ -57,13 +62,21 @@ class Main {
          */
         for (int manche = 1 ; manche<=2 ; manche++) {
             afficherTitre("MANCHE " + manche, 3) ;
+            sautDeLignes(1) ;
             for (int competiteur = 1 ; competiteur<=nbCompetiteurs ; competiteur++) {
                 afficherSousTitre("Compétiteur n°" + competiteur) ;
                 saisieEtTraitementResultatsManche(tabTempsCompetiteurs, competiteur, longueurParcours, nbTotalBarres) ;
+                sautDeLignes(1) ;
             }
         }
+        // Saut de lignes afin d'améliorer la lisibilité
+        sautDeLignes(2) ;
+
+        // Affichage du podium
         afficherTitre("PODIUM", 3) ;
+        sautDeLignes(1) ;
         emplacementPodium(tabTempsCompetiteurs, nbCompetiteurs) ;
+        sautDeLignes(2) ;
 
 
     }
@@ -470,6 +483,24 @@ class Main {
     }
 
     /**
+     * -----------------------------
+     *    Fonction : sautDeLignes
+     * -----------------------------
+     * 
+     * @author Victor Jockin
+     *
+     * Affiche un nombre donné de sauts de lignes
+     * 
+     * @param pfNbSautsDeLignes IN  :   nombre de sauts de lignes à afficher
+     * 
+    **/
+    public static void sautDeLignes(int pfNbSautsDeLignes) {
+        for (int i = 0 ; i<pfNbSautsDeLignes ; i++) {
+                System.out.println("") ;
+        }
+    }
+
+    /**
      * ---------------------------------
      *    Fonction : ligneHorizontale
      * ---------------------------------
@@ -493,25 +524,6 @@ class Main {
         }
         return ligneHorizontale ;
     }
-
-    /**
-     * -----------------------------
-     *    Fonction : sautDeLignes
-     * -----------------------------
-     * 
-     * @author Victor Jockin
-     *
-     * Affiche un nombre donné de sauts de lignes
-     * 
-     * @param pfNbSautsDeLignes IN  :   nombre de sauts de lignes à afficher
-     * 
-    **/
-    public static void sautDeLignes(int pfNbSautsDeLignes) {
-        for (int i = 0 ; i<pfNbSautsDeLignes ; i++) {
-                System.out.println("") ;
-        }
-    }
-
 
 
 

@@ -5,7 +5,7 @@ class Main {
 
     /**
      * Point d'entrée du programme
-     * @author Victor Jockin / Adrien Faure / Zachary Ivars 
+     * @authors Victor Jockin / Adrien Faure / Zachary Ivars 
      * @param args IN : arguments de la ligne de commande
      */
     public static void main(String[] args) {

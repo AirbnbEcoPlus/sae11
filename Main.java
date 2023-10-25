@@ -1,12 +1,24 @@
+
+
 import java.util.Scanner;
+
 
 class Main {
 
 
+
+
     /**
+     * -------------------------
+     *    PROGRAMME PRINCIPAL   
+     * -------------------------
+     * 
      * Point d'entrée du programme
-     * @authors Victor Jockin / Adrien Faure / Zachary Ivars 
+     * 
+     * @authors Adrien Faure / Zachary Ivars / Victor Jockin
+     * 
      * @param args IN : arguments de la ligne de commande
+     * 
      */
     public static void main(String[] args) {
 
@@ -26,6 +38,7 @@ class Main {
 
         // Tableau contenant les temps de chaque compétiteur
         tabTempsCompetiteurs = new int[nbCompetiteurs];
+
 
         /*
          * -----------------------------------
@@ -48,34 +61,12 @@ class Main {
 
 
 
-    /** 
-     * Calcule et retourne le temps compensé en millisecondes
-     *
-     * @author Adrien Faure
-     * @param temps IN : Temps d'un competiteur
-     * @param nbBarresTombees IN : nombre de barres tombé par le compétiteur
-     * @return temps composé
+    /*
+     * -------------
+     *    SAISIES
+     * -------------
+     * 
      */
-    public static int calculTempsAvecPenalites(int temps, int nbBarresTombees){
-        int tempsCompense = temps + (8000 * nbBarresTombees);
-        return tempsCompense; 
-    }
-    
-    /** 
-     * Retourne le temps compensé en minutes et secondes et millisecondes
-     *
-     * @author Adrien Faure
-     * @param tempsCompense IN : Temps d'un competiteur
-     * @return temps composé en minute, secondes et millisecondes
-     */
-    public static String convertMillisecondeToTime(int tempsCompense){
-        int secondes = (int) (tempsCompense/1000) % 60;
-        tempsCompense -= 1000 * secondes;
-        int minutes = (int) tempsCompense /(1000*60);
-        tempsCompense -= 60000 * minutes;
-        return minutes + " minutes et " + secondes + " secondes " + tempsCompense; 
-    }
-
 
     /**
      * Permet la saisie a l'utilisateur du nombre Total de barres en vérifiant la
@@ -90,7 +81,6 @@ class Main {
         int max = pfNbObstacles * 4;
         return saisieIntBornes(min, max, "Saisir le nombre total de barres : ");
     }
-
 
     /**
      * Permet la saisie a l'utilisateur d'un tableau
@@ -174,9 +164,47 @@ class Main {
 
 
     /*
-     * ------------------------------------------
-     *    FONCTIONS DE SAISIE ET DE TRAITEMENT
-     * ------------------------------------------
+     * -----------------------------------------------
+     *    CALCUL ET MISE EN FORME DU TEMPS COMPENSÉ
+     * -----------------------------------------------
+     * 
+     */
+
+    /** 
+     * Calcule et retourne le temps compensé en millisecondes
+     *
+     * @author Adrien Faure
+     * @param temps IN : Temps d'un competiteur
+     * @param nbBarresTombees IN : nombre de barres tombé par le compétiteur
+     * @return temps composé
+     */
+    public static int calculTempsAvecPenalites(int temps, int nbBarresTombees){
+        int tempsCompense = temps + (8000 * nbBarresTombees);
+        return tempsCompense; 
+    }
+    
+    /** 
+     * Retourne le temps compensé en minutes, secondes et millisecondes
+     *
+     * @author Adrien Faure
+     * @param tempsCompense IN : Temps d'un competiteur
+     * @return temps composé en minute, secondes et millisecondes
+     */
+    public static String convertMillisecondeToTime(int tempsCompense){
+        int secondes = (int) (tempsCompense/1000) % 60;
+        tempsCompense -= 1000 * secondes;
+        int minutes = (int) tempsCompense /(1000*60);
+        tempsCompense -= 60000 * minutes;
+        return minutes + " minutes et " + secondes + " secondes " + tempsCompense; 
+    }
+
+
+
+
+    /*
+     * -----------------------------------------
+     *    SAISIE ET TRAITEMENT DES RÉSULTATS
+     * -----------------------------------------
      * 
      * -- (1) --
      * Saisie des résultats d'un compétiteur pour une manche
@@ -260,6 +288,13 @@ class Main {
 
 
 
+
+    /*
+     * ------------
+     *    PODIUM
+     * ------------
+     * 
+     */
 
     /**
      * 
@@ -378,10 +413,12 @@ class Main {
 
 
 
+
     /* 
-     * ---------------------------
-     *    FONCTIONS D'AFFICHAGE 
-     * ---------------------------
+     * --------------------------------
+     *    AFFICHAGE ET MISE EN FORME
+     * --------------------------------
+     * 
      */
 
     /**
@@ -425,4 +462,8 @@ class Main {
         }
         return ligneHorizontale ;
     }
+
+
+
+
 }

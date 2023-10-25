@@ -150,19 +150,29 @@ class Main {
     }
 
 
-    /* 
+
+
+    /*
      * ------------------------------------------
      *    FONCTIONS DE SAISIE ET DE TRAITEMENT
      * ------------------------------------------
-     *    - Par manche
-     *    - Pour chaque compétiteur
+     * 
+     * -- (1) --
+     * Saisie des résultats d'un compétiteur pour une manche
+     * 
+     * -- (2) --
+     * Elimination ou non des compétiteurs
+     * 
+     * -- (3) --
+     * Qualification ou non des participants
+     * pour la manche suivante
      * 
      */
 
     /**
-     * --------------------------------------
-     *    Fonction : saisieResultatsManche
-     * --------------------------------------
+     * --------------------------------------------------
+     *    Fonction : saisieEtTraitementResultatsManche
+     * --------------------------------------------------
      * 
      * @author Victor Jockin
      * 
@@ -171,15 +181,62 @@ class Main {
      * 
      * @param pfTabTempsCompetiteurs    IN/OUT  :   tableau des temps de chaque compétiteurs
      * @param pfBrassardCompetiteur     IN      :   numéro de brassard du compétiteur
+     * @param pfLongueurParcours        IN      :   longueur du parcours (utilisée dans la fonction estElimine)
      * 
     **/
-    public static void saisieResultatsManche(int[] pfTabTempsCompetiteurs, int pfBrassardCompetiteur) {
+    public static void saisieEtTraitementResultatsManche(int[] pfTabTempsCompetiteurs, int pfBrassardCompetiteur, int pfLongueurParcours) {
+
+        // Saisie des résultats du compétiteur
         int nbBarresTombees = saisieIntBornes(0, nbTotalBarres, "Saisir le nombre de barres tombées : ") ;
         int nbRefus = saisieIntBorneInf(0, "Saisir le nombre de refus : ") ;
         int testChute = saisieIntBorne(0, 1, "Y a-t-il eu chute ?\n[0] Oui\n[1] Non\n[2] Si quand même\n---") ;
         int temps = saisieIntBorneInf(0, "Saisir le temps réalisé en millisecondes : ") ;
         pfTabTempsCompetiteurs[pfBrassardCompetiteur-1] = temps ;
+
+        // Elimination ou non du compétiteur
+        // Qualification du compétiteur s'il n'est pas éliminé
+        if (estElimine(nbRefus, testChute, temps, pfLongueurParcours) == true) {
+            // Remarque : Lorsque qu'un compétiteur est éliminé,
+            // son temps dans le tableau vaut -1
+            pfTabTempsCompetiteurs[pfBrassardCompetiteur-1] = -1 ;
+        } else {
+            int tempsCompense = calculTempsAvecPenalites(temps, nbBarresTombees) ;
+            pfTabTempsCompetiteurs[pfBrassardCompetiteur-1] = tempsCompense ;
+            // Affichage du temps compensé
+            System.out.println(convertMillisecondeToTime(tempsCompense)) ;
+        }
+
     }
+
+    /**
+     * ---------------------------
+     *    Fonction : estElimine
+     * ---------------------------
+     * 
+     * @author Victor Jockin
+     * 
+     * Détermine si un compétiteur est éliminé ou non
+     * en applicant le barème C
+     * 
+     * @param pfNbRefus             IN  :   nombre de refus du cheval du compétiteur
+     * @param pfTestChute           IN  :   s'il y a eu chute (booléen)
+     * @param pfTemps               IN  :   temps réalisé par le compétiteur
+     * @param pfLongueurParcours    IN  :   longueur du parcours
+     * 
+     * @return Si le compétiteur est éliminé ou non (booléen)
+     * 
+    **/
+    public static boolean estElimine(int pfNbRefus, int pfTestChute, int pfTemps, int pfLongueurParcours) {
+        if (pfNbRefus<3) {
+            if (pfTestChute == 1) {
+                if (pfLongueurParcours<600 && pfTemps<=120000 || pfLongueurParcours>=600 && pfTemps<=180000) {
+                    return false ;
+                }
+            }
+        }
+        return true ;
+    }
+
 
 
 

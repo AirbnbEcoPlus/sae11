@@ -28,15 +28,26 @@ class Main {
 
 
     /** 
-     * Calcule et retourne le temps compensé en minutes et secondes et millisecondes
+     * Calcule et retourne le temps compensé en millisecondes
      *
      * @author Adrien Faure
      * @param temps IN : Temps d'un competiteur
      * @param nombreBarresTombe IN : nombre de barres tombé par le compétiteur
      * @return temps composé
      */
-    public static String calcTemps(int temps, int nombreBarresTombe){
+    public static int calcTemps(int temps, int nombreBarresTombe){
         int tempsCompense = temps + (8000 * nombreBarresTombe);
+        return tempsCompense; 
+    }
+    
+    /** 
+     * Retourne le temps compensé en minutes et secondes et millisecondes
+     *
+     * @author Adrien Faure
+     * @param tempsCompense IN : Temps d'un competiteur
+     * @return temps composé en minute, secondes et millisecondes
+     */
+    public static String convertMillisecondeToTime(int tempsCompense){
         int secondes = (int) (tempsCompense/1000) % 60;
         tempsCompense -= 1000 * secondes;
         int minutes = (int) tempsCompense /(1000*60);

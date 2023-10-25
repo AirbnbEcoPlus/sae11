@@ -23,6 +23,13 @@ class Main {
     public static void main(String[] args) {
 
 
+        /*
+         * ------------------------------------
+         *    DÉCLARATIONS / INITIALISATIONS
+         * ------------------------------------
+         * 
+         */
+
         // Déclaration des variables
         int tabTempsCompetiteurs[];     // Tableau contenant les temps de chaque compétiteur
         int nbCompetiteurs;             // Nombre de compétiteurs
@@ -42,18 +49,18 @@ class Main {
 
         /*
          * -----------------------------------
-         *    Déroulement de la compétition
+         *    DÉROULEMENT DE LA COMPÉTITION
          * -----------------------------------
          * 
          * Nombre de manches : 2
          * 
          */
         for (int manche = 1 ; manche<=2 ; manche++) {
-            saisieEtTraitementResultatsManche(tabTempsCompetiteurs, nbCompetiteurs, longueurParcours) ;
+            
+            for (int competiteur = 1 ; competiteur<=nbCompetiteurs ; competiteur++) {
+                saisieEtTraitementResultatsManche(tabTempsCompetiteurs, competiteur, longueurParcours) ;
+            }
         }
-
-
-        // Affichages
 
 
     }
@@ -422,21 +429,19 @@ class Main {
      */
 
     /**
-     * ---------------------------------
-     *    Fonction : miseEnFormeTitre
-     * ---------------------------------
+     * ------------------------------
+     *    Fonction : afficherTitre
+     * ------------------------------
      * 
      * @author Victor Jockin
      *
-     * Retourne la mise en forme d'un titre
+     * Affiche la mise en forme du titre donné en paramètre
      * 
-     * @param pfTitre   IN  :   titre à mettre en forme
-     * 
-     * @return le titre mis en forme
+     * @param pfTitre   IN  :   titre à mettre en forme et à afficher
      * 
     **/
-    public static String miseEnFormeTitre(String pfTitre) {
-        return pfTitre + "\n" + ligneHorizontale(pfTitre.length(), "-") ;
+    public static void afficherTitre(String pfTitre) {
+        System.out.println(pfTitre + "\n" + ligneHorizontale(pfTitre.length(), "-")) ;
     }
 
     /**
@@ -446,8 +451,9 @@ class Main {
      * 
      * @author Victor Jockin
      *
-     * Retourne une ligne horizontale construite à partir
-     * d'un caractère donné en paramètre
+     * Retourne une ligne horizontale :
+     * - Avec une longueur donnée
+     * - Construite à partir d'un caractère donné
      * 
      * @param pfLongueurLigne   IN  :   longueur de la ligne à construire
      * @param pfCaractere       IN  :   caractère utilisé pour construire la ligne

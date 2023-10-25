@@ -163,7 +163,9 @@ class Main {
         pfTabTempsCompetiteurs[pfBrassardCompetiteur-1] = temps ;
     }
 
-     /**
+
+
+    /**
      * 
      * 
      * 
@@ -264,6 +266,7 @@ class Main {
 
         return tabPostModif;
     }
+
 
 
     /* 

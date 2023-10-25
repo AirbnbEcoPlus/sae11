@@ -108,23 +108,6 @@ class Main {
     }
 
     /**
-     * Permet la saisie a l'utilisateur d'un tableau
-     * 
-     * @author Adrien Faure
-     * @param pfMsg   IN message visible a l'utilisateur
-     * @param pfTab   OUT tableau de valeurs
-     * @param pfNbVal IN nombre de valeurs a saisir
-     */
-    public static void saisieTabInt(String pfMsg, int[] pfTab, int pfNbVal) {
-        Scanner clavier = new Scanner(System.in);
-        for (int i = 0; i < pfNbVal; i++) {
-            System.out.print(pfMsg + (i + 1) + " : ");
-            int saisie = clavier.nextInt();
-            pfTab[i] = saisie;
-        }
-    }
-
-    /**
      * Permet la saisie de l'utilisateur a partir d'un minimum
      * 
      * @author Adrien Faure

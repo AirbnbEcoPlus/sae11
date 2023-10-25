@@ -10,6 +10,7 @@ class Main {
      */
     public static void main(String[] args) {
 
+
         // Déclaration des variables
         int tabTempsCompetiteurs[];     // Tableau contenant les temps de chaque compétiteur
         int nbCompetiteurs;             // Nombre de compétiteurs
@@ -26,8 +27,25 @@ class Main {
         // Tableau contenant les temps de chaque compétiteur
         tabTempsCompetiteurs = new int[nbCompetiteurs];
 
-        
+        /*
+         * -----------------------------------
+         *    Déroulement de la compétition
+         * -----------------------------------
+         * 
+         * Nombre de manches : 2
+         * 
+         */
+        for (int manche = 1 ; manche<=2 ; manche++) {
+            saisieEtTraitementResultatsManche(tabTempsCompetiteurs, nbCompetiteurs, longueurParcours) ;
+        }
+
+
+        // Affichages
+
+
     }
+
+
 
 
     /** 

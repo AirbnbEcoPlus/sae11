@@ -494,6 +494,25 @@ class Main {
         return ligneHorizontale ;
     }
 
+    /**
+     * -----------------------------
+     *    Fonction : sautDeLignes
+     * -----------------------------
+     * 
+     * @author Victor Jockin
+     *
+     * Affiche un nombre donné de sauts de lignes
+     * 
+     * @param pfNbSautsDeLignes IN  :   nombre de sauts de lignes à afficher
+     * 
+    **/
+    public static void sautDeLignes(int pfNbSautsDeLignes) {
+        for (int i = 0 ; i<pfNbSautsDeLignes ; i++) {
+                System.out.println("") ;
+        }
+    }
+
+
 
 
 

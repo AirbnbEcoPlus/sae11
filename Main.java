@@ -226,7 +226,7 @@ class Main {
                 /* on regarde combien de fois temp apparaît puis on rajoute le numéro du brassard correspondant à la chaîne de caractère */
                 for (int i = 0; i < pfNbVal; i++) {
                     if (temp == pfTableau[i]) {
-                        System.out.print("" + (i + 1));
+                        System.out.print("" + (i + 1) + " avec un temps de " + convertMillisecondeToTime(temp));
                         placesPodium += 1;
                     }
                 }
@@ -255,7 +255,7 @@ class Main {
         // traitement des données
         /* On parcours le tableau et à chaque fois que bestTime est supérieur à l'élément dans le tableau alors on affecte à bestTime le temps le plus bas */
         for (int i = 1; i < pfNbVal; i++) {
-            if (bestTime >= pfTableau[i])
+            if (bestTime >= pfTableau[i] && pfTableau[i] >= 0)
                 bestTime = pfTableau[i];
         }
 

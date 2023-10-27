@@ -324,7 +324,6 @@ class Main {
         int temp;
         int placesPodium = 1;
         int tempTab[];
-        int indice = 0;
 
         // traitement des données
         /* temp signifiant temporary permet de garder le meilleur temps fait par les compétiteurs */
@@ -347,7 +346,7 @@ class Main {
                         placesPodium += 1;
                     }
                 
-            /* Si la place occupé n'est pas la première place alors on éxecute le code */
+            /* Si la place occupé n'est pas la première place alors on exécute le code */
             } else {
                 /* On redefinit temp qui est deuxième meilleur temps */
                 temp = meilleurTemps(tempTab, tempTab.length);
@@ -410,7 +409,7 @@ class Main {
         int nbElt = 0;
 
         //traitement des données
-        /* On parcours le tableau original, et on affecte tous les éléments différent du meilleur temps à un nouveau tableau */
+        /* On parcours le tableau original, et on affecte tous les éléments différents du meilleur temps à un nouveau tableau */
         for (int i = 0; i < pfNbVal; i++)
             if (pfTableau[i] != pfVal) {
                 tab[nbElt] = pfTableau[i];

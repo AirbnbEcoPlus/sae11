@@ -41,9 +41,9 @@ class Main {
         afficherTitre("INFORMATIONS SUR LE PARCOURS", 3) ;
         sautDeLignes(1) ;
 
-        nbCompetiteurs = saisieIntBornes(1, 50, "Saisir le nombre de competiteurs : ");
-        longueurParcours = saisieIntBorneInf(0, "Saisir la longueur de la piste : ");
-        nbObstacles = saisieIntBorneInf(1, "Saisir le nombe d'obstacles : ");
+        nbCompetiteurs = saisieIntBornes(1, 50, "[?] Saisir le nombre de competiteurs : ");
+        longueurParcours = saisieIntBorneInf(0, "[?] Saisir la longueur de la piste : ");
+        nbObstacles = saisieIntBorneInf(1, "[?] Saisir le nombe d'obstacles : ");
         nbTotalBarres = saisieNbTotalBarres(nbObstacles);
         // Saut de lignes afin d'améliorer la lisibilité
         sautDeLignes(2) ;
@@ -106,7 +106,7 @@ class Main {
     public static int saisieNbTotalBarres(int pfNbObstacles) {
         int min = pfNbObstacles * 2;
         int max = pfNbObstacles * 4;
-        return saisieIntBornes(min, max, "Saisir le nombre total de barres : ");
+        return saisieIntBornes(min, max, "[?] Saisir le nombre total de barres : ");
     }
 
     /**
@@ -118,11 +118,11 @@ class Main {
      * @return valeur saisie par l'utilisateur
      */
     public static int saisieIntBorneInf(int pfMin, String pfMsg) {
-        System.out.print(pfMsg);
+        System.out.print(pfMsg + " (Valeur minimale : " + pfMin + ")");
         Scanner clavier = new Scanner(System.in);
         int entier = clavier.nextInt();
         while (entier < pfMin) {
-            System.out.println("(Valeur minimale " + pfMin + ")");
+            System.out.println("[!] Valeur minimale : " + pfMin);
             System.out.print(pfMsg);
             entier = clavier.nextInt();
         }
@@ -138,11 +138,11 @@ class Main {
      * @return valeur saisie par l'utilisateur
      */
     public static int saisieIntBorneSup(int pfMax, String pfMsg) {
-        System.out.print(pfMsg);
+        System.out.print(pfMsg + " (Valeur maximale" + pfMax + ")");
         Scanner clavier = new Scanner(System.in);
         int entier = clavier.nextInt();
         while (entier > pfMax) {
-            System.out.println("(Valeur maximale " + pfMax + ")");
+            System.out.println("[!] Valeur maximale " + pfMax);
             System.out.print(pfMsg);
             entier = clavier.nextInt();
         }
@@ -159,11 +159,11 @@ class Main {
      * @return valeur saisie par l'utilisateur
      */
     public static int saisieIntBornes(int pfMin, int pfMax, String pfMsg) {
-        System.out.print(pfMsg);
+        System.out.print(pfMsg + " (Valeur comprise entre " + pfMin + " et " + pfMax + ")"));
         Scanner clavier = new Scanner(System.in);
         int entier = clavier.nextInt();
         while (entier < pfMin || entier > pfMax) {
-            System.out.println("(Valeur comprise entre " + pfMin + " et " + pfMax + ")");
+            System.out.println("[!] Valeur comprise entre " + pfMin + " et " + pfMax);
             System.out.print(pfMsg);
             entier = clavier.nextInt();
         }
@@ -247,10 +247,10 @@ class Main {
     public static void saisieEtTraitementResultatsManche(int[] pfTabTempsCompetiteurs, int pfBrassardCompetiteur, int pfLongueurParcours, int pfNbTotalBarres) {
         
         // Saisie des résultats du compétiteur
-        int nbBarresTombees = saisieIntBornes(0, pfNbTotalBarres, "Saisir le nombre de barres tombées : ") ;
-        int nbRefus = saisieIntBorneInf(0, "Saisir le nombre de refus : ") ;
-        int testChute = saisieIntBornes(0, 1, "Y a-t-il eu chute ?\n[0] Oui\n[1] Non\n-------------------") ;
-        int temps = saisieIntBorneInf(0, "Saisir le temps réalisé en millisecondes : ") ;
+        int nbBarresTombees = saisieIntBornes(0, pfNbTotalBarres, "[?] Saisir le nombre de barres tombées : ") ;
+        int nbRefus = saisieIntBorneInf(0, "[?] Saisir le nombre de refus : ") ;
+        int testChute = saisieIntBornes(0, 1, "[?] Y a-t-il eu chute ?\n    [0] Oui\n    [1] Non\n-----------------------") ;
+        int temps = saisieIntBorneInf(0, "[?] Saisir le temps réalisé en millisecondes : ") ;
         pfTabTempsCompetiteurs[pfBrassardCompetiteur-1] = temps ;
 
         // Elimination ou non du compétiteur

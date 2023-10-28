@@ -227,9 +227,9 @@ class Main {
      */
 
     /**
-     * --------------------------------------------------
-     *    Fonction : saisieEtTraitementResultatsManche
-     * --------------------------------------------------
+     * ---------------------------------------------------
+     *    Procédure : saisieEtTraitementResultatsManche
+     * ---------------------------------------------------
      * 
      * @author Victor Jockin
      * 
@@ -247,7 +247,7 @@ class Main {
         // Saisie des résultats du compétiteur
         int nbBarresTombees = saisieIntBornes(0, pfNbTotalBarres, "Saisir le nombre de barres tombées : ") ;
         int nbRefus = saisieIntBorneInf(0, "Saisir le nombre de refus : ") ;
-        int testChute = saisieIntBornes(0, 1, "Y a-t-il eu chute ?\n[0] Oui\n[1] Non\n[2] Si quand même\n---") ;
+        int testChute = saisieIntBornes(0, 1, "Y a-t-il eu chute ?\n[0] Oui\n[1] Non\n-------------------") ;
         int temps = saisieIntBorneInf(0, "Saisir le temps réalisé en millisecondes : ") ;
         pfTabTempsCompetiteurs[pfBrassardCompetiteur-1] = temps ;
 
@@ -437,9 +437,9 @@ class Main {
      */
 
     /**
-     * ------------------------------
-     *    Fonction : afficherTitre
-     * ------------------------------
+     * -------------------------------
+     *    Procédure : afficherTitre
+     * -------------------------------
      * 
      * @author Victor Jockin
      *
@@ -456,9 +456,9 @@ class Main {
     }
 
     /**
-     * ----------------------------------
-     *    Fonction : afficherSousTitre
-     * ----------------------------------
+     * -----------------------------------
+     *    Procédure : afficherSousTitre
+     * -----------------------------------
      * 
      * @author Victor Jockin
      *
@@ -472,9 +472,9 @@ class Main {
     }
 
     /**
-     * -----------------------------
-     *    Fonction : sautDeLignes
-     * -----------------------------
+     * ------------------------------
+     *    Procédure : sautDeLignes
+     * ------------------------------
      * 
      * @author Victor Jockin
      *

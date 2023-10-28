@@ -382,7 +382,7 @@ class Main {
      */
     public static int meilleurTemps(int[] pfTableau, int pfNbVal) {
         // initialisation des variables
-        if (pfTableau[0] != 0) int bestTime = pfTableau[0];
+        int bestTime = pfTableau[0];
 
         // traitement des données
         /* On parcours le tableau et à chaque fois que bestTime est supérieur à l'élément dans le tableau alors on affecte à bestTime le temps le plus bas */

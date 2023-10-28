@@ -119,7 +119,7 @@ class Main {
      */
     public static int saisieIntBorneInf(int pfMin, String pfMsg) {
         System.out.println(pfMsg);
-        System.out.println("[!] Valeur minimale : " + pfMin);
+        System.out.println("[i] Valeur minimale : " + pfMin);
         Scanner clavier = new Scanner(System.in);
         int entier = clavier.nextInt();
         while (entier < pfMin) {
@@ -140,7 +140,7 @@ class Main {
      */
     public static int saisieIntBorneSup(int pfMax, String pfMsg) {
         System.out.println(pfMsg);
-        System.out.println("[!] Valeur maximale " + pfMax);
+        System.out.println("[i] Valeur maximale " + pfMax);
         Scanner clavier = new Scanner(System.in);
         int entier = clavier.nextInt();
         while (entier > pfMax) {
@@ -162,7 +162,7 @@ class Main {
      */
     public static int saisieIntBornes(int pfMin, int pfMax, String pfMsg) {
         System.out.println(pfMsg);
-        System.out.println("[!] Valeur comprise entre " + pfMin + " et " + pfMax);
+        System.out.println("[i] Valeur comprise entre " + pfMin + " et " + pfMax);
         Scanner clavier = new Scanner(System.in);
         int entier = clavier.nextInt();
         while (entier < pfMin || entier > pfMax) {

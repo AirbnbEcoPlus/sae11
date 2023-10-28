@@ -493,7 +493,7 @@ class Main {
     **/
     public static void sautDeLignes(int pfNbSautsDeLignes) {
         for (int i = 0 ; i<pfNbSautsDeLignes ; i++) {
-                System.out.println("") ;
+            System.out.println("") ;
         }
     }
 

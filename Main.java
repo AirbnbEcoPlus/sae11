@@ -340,7 +340,7 @@ class Main {
             /* si c'est la place occupée est 1 alors on regarde combien de fois temp apparaît puis on rajoute le numéro du brassard correspondant à la chaîne de caractère */
             if (placesPodium == 1) {
                 for (int i = 0; i < pfNbVal; i++) 
-                    if (temp == pfTableau[i] && temp >=0) {
+                    if (temp == pfTableau[i]) {
                         System.out.print("" + (i + 1) + "\n" + "avec un temps de : " + convertMillisecondeToTime(pfTableau[i]));
                         /* À chaque fois que le temps est trouvé alors on rajoute 1 au nombre de places occupées */
                         placesPodium += 1;
@@ -353,7 +353,7 @@ class Main {
                 tempTab = tempsPostModif(tempTab, tempTab.length, temp);
                 /* on regarde combien de fois temp_bis apparaît puis on rajoute le numéro du brassard correspondant à la chaîne de caractère */
                 for (int i = 0; i < pfNbVal; i++) 
-                    if (temp == pfTableau[i] && temp >=0) {
+                    if (temp == pfTableau[i]) {
                         System.out.print("" + (i + 1) + "\n" + "avec un temps de : " + convertMillisecondeToTime(pfTableau[i]));
                         placesPodium += 1;
                     }
@@ -378,7 +378,7 @@ class Main {
      */
     public static int meilleurTemps(int[] pfTableau, int pfNbVal) {
         // initialisation des variables
-        int bestTime = pfTableau[0];
+        if (pfTableau[0] != 0) int bestTime = pfTableau[0];
 
         // traitement des données
         /* On parcours le tableau et à chaque fois que bestTime est supérieur à l'élément dans le tableau alors on affecte à bestTime le temps le plus bas */

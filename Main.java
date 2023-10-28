@@ -64,6 +64,8 @@ class Main {
             afficherTitre("MANCHE " + manche, 3) ;
             sautDeLignes(1) ;
             for (int competiteur = 1 ; competiteur<=nbCompetiteurs ; competiteur++) {
+                // Si la case d'indice i du tableau a pour valeur -1,
+                // cela signifie que le competiteur i+1 est éliminé.
                 if (tabTempsCompetiteurs[competiteur-1] != -1) {
                     afficherSousTitre("Compétiteur n°" + competiteur) ;
                     saisieEtTraitementResultatsManche(tabTempsCompetiteurs, competiteur, longueurParcours, nbTotalBarres) ;
